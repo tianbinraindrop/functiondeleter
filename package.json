@@ -2,7 +2,7 @@
   "name": "pythonfunctiondeleter",
   "displayName": "pythonfunctiondeleter",
   "description": "remove python function/class",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -29,7 +29,7 @@
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "^18.19.24",
     "@types/vscode": "^1.87.0",
