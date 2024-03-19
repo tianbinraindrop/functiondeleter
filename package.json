@@ -8,10 +8,11 @@
   },
   "publisher": "Tianbin",
   "repository": {"url": "https://github.com/tianbinraindrop/functiondeleter"},
+  "keywords": ["refactor","javascript","typescript","function/class delete"],
   "categories": [
-    "Other"
+    "Programming Languages","Formatters"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onLanguage:python"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -19,7 +20,14 @@
         "command": "extension.pythonfunctiondeleter",
         "title": "remove python function/class"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.pythonfunctiondeleter",
+        "key": "ctrl+alt D"
+      }
     ]
+ 
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
