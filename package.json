@@ -2,7 +2,7 @@
   "name": "pythonfunctiondeleter",
   "displayName": "python function/class deleter",
   "description": "remove python function/class",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -38,6 +38,7 @@
       }
     ]
   },
+  "icon": "images/icon.png",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
