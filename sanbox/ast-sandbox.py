@@ -11,6 +11,14 @@ class action_demo1():
         self.tablename = 'vimtips'
 
 
+class action_demo2():
+
+    def __init__(self) -> None:
+        self.pg = con_postgresql()
+        self.conn = self.pg.connect()
+        self.tablename = 'vimtips'
+
+
 class action_demo3():
 
     class nested_class():
@@ -28,6 +36,27 @@ class action_vim():
         self.pg = con_postgresql()
         self.conn = self.pg.connect()
         self.tablename = 'vimtips'
+
+    def actiontypelist(self) -> list:
+        """
+        列出出现过的actiontype名称
+        Returns:
+            list: 出现过的actiontype名称列表
+        """
+        sql = f"""SELECT actiontype,count(actiontype) as ct from {self.tablename} group by actiontype order by ct desc"""
+        listpd = self.pg.query(sql)
+        return listpd.actiontype.values.tolist()
+
+    def modelist(self) -> list:
+        """
+        列出出现过的mode名称
+        Returns:
+            list: 出现过的mode名称列表
+        """
+        sql = f"""SELECT mode,count(mode) as ct from {self.tablename} group by mode order by ct desc"""
+        listpd = self.pg.query(sql)
+        # mode是pandas的关键字，所以这里要用listpd['mode']
+        return listpd['mode'].values.tolist()
 
     def add(self, operation: str, mode: str, frequency: str, hard: str,
             vscode: bool, instructions: str, memo: str, actiontype: str):
