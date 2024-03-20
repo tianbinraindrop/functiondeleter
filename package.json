@@ -1,18 +1,28 @@
 {
   "name": "pythonfunctiondeleter",
-  "displayName": "pythonfunctiondeleter",
+  "displayName": "python function/class deleter",
   "description": "remove python function/class",
   "version": "0.0.2",
   "engines": {
     "vscode": "^1.87.0"
   },
   "publisher": "Tianbin",
-  "repository": {"url": "https://github.com/tianbinraindrop/functiondeleter"},
-  "keywords": ["refactor","javascript","typescript","function/class delete"],
-  "categories": [
-    "Programming Languages","Formatters"
+  "repository": {
+    "url": "https://github.com/tianbinraindrop/functiondeleter"
+  },
+  "keywords": [
+    "refactor",
+    "javascript",
+    "typescript",
+    "function/class delete"
   ],
-  "activationEvents": ["onLanguage:python"],
+  "categories": [
+    "Programming Languages",
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:python"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -24,10 +34,9 @@
     "keybindings": [
       {
         "command": "extension.pythonfunctiondeleter",
-        "key": "ctrl+alt D"
+        "key": "ctrl+f5"
       }
     ]
- 
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

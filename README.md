@@ -1,12 +1,5 @@
 # functiondeleter
 
+[简体中文](./README-zh_CN.md) | 英文
+
 [functiondeleter github](https://github.com/tianbinraindrop/functiondeleter)
-
-## setup
-
-```shell
-npm i @types/node --save-dev
-npm i dt-python-parser --save-dev
-npm list
-vsce package
-```
