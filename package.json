@@ -29,12 +29,21 @@
       {
         "command": "extension.pythonfunctiondeleter",
         "title": "remove python function/class"
+      },      
+      {
+        "command": "extension.pythonfunctionduplicate",
+        "title": "duplicate python function/class"
       }
+ 
     ],
     "keybindings": [
       {
         "command": "extension.pythonfunctiondeleter",
         "key": "ctrl+f5"
+      },
+      {
+        "command": "extension.pythonfunctionduplicate",
+        "key": "ctrl+f6"
       }
     ]
   },
