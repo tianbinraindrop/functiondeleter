@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         let codeall = editor.document.getText();
         let result = findDef(codeall, name, startline);
-        console.log("name", name, "startline", startline,"result", result);
+        console.log("name", name, "startline", startline, "result", result);
         if (result.end != -1) {
           console.log("deleting lines", result.start, result.end);
           let startPos = new vscode.Position(result.start - 1, 0);
@@ -42,22 +42,24 @@ export function activate(context: vscode.ExtensionContext) {
 
         let codeall = editor.document.getText();
         let result = findDef(codeall, name, startline);
-        console.log("name", name, "startline", startline,"result", result);
+        console.log("name", name, "startline", startline, "result", result);
         if (result.end != -1) {
           console.log("duplcating lines", result.start, result.end);
           let startPos = new vscode.Position(result.start - 1, 0);
           let endPos = new vscode.Position(result.end - 1, 0);
-          let duptext = editor.document.getText(new vscode.Range(startPos, endPos));
+          let duptext = editor.document.getText(
+            new vscode.Range(startPos, endPos)
+          );
           editor.edit((edit) => {
-              edit.insert(startPos, "\n" + duptext + '\n');
+            edit.insert(startPos, "\n" + duptext + "\n");
           });
         }
       }
     }
   );
 
-  context.subscriptions.push({disposable,disposable_dup});
-  // context.subscriptions.push(disposable_dup);
+  context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable_dup);
 }
 
 // This method is called when your extension is deactivated
