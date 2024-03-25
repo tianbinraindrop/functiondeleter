@@ -1,8 +1,8 @@
 {
   "name": "pythonfunctiondeleter",
   "displayName": "python function/class deleter",
-  "description": "remove python function/class",
-  "version": "0.0.5",
+  "description": "remove/duplicate python function/class",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.87.0"
   },
