@@ -1,6 +1,8 @@
 import * as vscode from "vscode";
 import { Uri, commands, window } from "vscode";
 import { findDef } from "./funvistor";
+import { getEdiors} from "./tools
+import { get } from "http";
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -58,8 +60,17 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  // 实现将当前行的函数移动到右边的编辑器的功能
+  let disposable_move2right = vscode.commands.registerCommand(
+    "file.moveCurrentLineToLeftEditor",
+    () => {
+      let editors = getEdiors();
+    }
+  );
+
   context.subscriptions.push(disposable);
   context.subscriptions.push(disposable_dup);
+  context.subscriptions.push(disposable_move2right);
 }
 
 // This method is called when your extension is deactivated

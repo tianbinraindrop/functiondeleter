@@ -2,7 +2,7 @@
   "name": "pythonfunctiondeleter",
   "displayName": "python function/class deleter",
   "description": "remove/duplicate python function/class",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -14,14 +14,20 @@
     "refactor",
     "javascript",
     "typescript",
-    "function/class delete"
+    "file  content",
+    "file  exchange",
+    "multi-file operation",
+    "line exchange",
+    "function deletion",
+    "class deletion"
   ],
   "categories": [
     "Programming Languages",
     "Formatters"
   ],
   "activationEvents": [
-    "onLanguage:python"
+    "onLanguage:python",
+    "onCommand:ile.moveCurrentLineToLeftEditor"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -33,8 +39,12 @@
       {
         "command": "extension.pythonfunctionduplicate",
         "title": "duplicate python function/class"
+      },
+      {
+        "category": "File",
+        "command": "file.moveCurrentLineToLeftEditor",
+        "title": "move current line to right editor"
       }
- 
     ],
     "keybindings": [
       {
