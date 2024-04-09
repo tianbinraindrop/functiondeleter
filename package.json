@@ -26,6 +26,10 @@
     "Formatters"
   ],
   "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:python",
+    "onLanguage:mardown"
+  ],
   "contributes": {
     "commands": [
       {
