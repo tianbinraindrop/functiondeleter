@@ -25,10 +25,6 @@
     "Programming Languages",
     "Formatters"
   ],
-  "activationEvents": [
-    "onLanguage:python",
-    "onCommand:ile.moveCurrentLineToLeftEditor"
-  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
@@ -41,8 +37,7 @@
         "title": "duplicate python function/class"
       },
       {
-        "category": "File",
-        "command": "file.moveCurrentLineToRightEditor",
+        "command": "extension.moveCurrentLineToRightEditor",
         "title": "move current line to right editor"
       }
     ],

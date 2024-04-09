@@ -3,7 +3,7 @@ import { window } from "vscode";
 import { findDef } from "./funvistor";
 import { TextEditor } from 'vscode';
 
-export function getEdiors():Array<TextEditor> {
+function getEdiors():Array<TextEditor> {
     const visibleEditors = window.visibleTextEditors;
     if (visibleEditors.length != 2) {
         return [];
@@ -18,7 +18,6 @@ export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "extension.pythonfunctiondeleter",
     () => {
-      // vscode.window.showInformationMessage('Hello World from pythonfunctiondeleter!');
       const editor = window.activeTextEditor;
       if (editor) {
         let selection = editor.selection;
@@ -71,9 +70,9 @@ export function activate(context: vscode.ExtensionContext) {
 
   // 实现将当前行的函数移动到右边的编辑器的功能
   let disposable_move2right = vscode.commands.registerCommand(
-    "file.moveCurrentLineToRightEditor",
+    "extension.moveCurrentLineToRightEditor",
     () => {
-      vscode.window.showInformationMessage('Hello World from pythonfunctiondeleter!');
+      console.log('hello move2right');
       let editors = getEdiors();
     }
   );
