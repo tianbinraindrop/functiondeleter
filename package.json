@@ -42,7 +42,7 @@
       },
       {
         "category": "File",
-        "command": "file.moveCurrentLineToLeftEditor",
+        "command": "file.moveCurrentLineToRightEditor",
         "title": "move current line to right editor"
       }
     ],
