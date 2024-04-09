@@ -1,18 +1,7 @@
 import * as vscode from "vscode";
 import { window } from "vscode";
 import { findDef } from "./funvistor";
-import { TextEditor } from 'vscode';
-
-function getEdiors():Array<TextEditor> {
-    const visibleEditors = window.visibleTextEditors;
-    if (visibleEditors.length != 2) {
-        return [];
-    }
-
-    let lefteditor:any = visibleEditors[0];
-    let righteditor:any = visibleEditors[1];
-    return [lefteditor, righteditor];
-}
+import { TextEditor } from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -69,11 +58,35 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   // 实现将当前行的函数移动到右边的编辑器的功能
+  // 命令必须小写，否则出现各种问题
   let disposable_move2right = vscode.commands.registerCommand(
-    "extension.moveCurrentLineToRightEditor",
+    "extension.movecurrentlinetorighteditor",
     () => {
-      console.log('hello move2right');
-      let editors = getEdiors();
+      
+      const visibleEditors = window.visibleTextEditors;
+      if (visibleEditors.length != 2) {
+        console.log("need 2 editors");
+      } else {
+        const lefteditor = visibleEditors[0];
+        const righteditor = visibleEditors[1];
+        
+        let cursorPosition = lefteditor.selection.active;
+        let line = lefteditor.document.lineAt(cursorPosition.line);
+        let endpos = new vscode.Position(cursorPosition.line, line.text.length);
+        let startpos = new vscode.Position(cursorPosition.line, 0);
+        const text = line.text;
+        
+        lefteditor.edit((edit) => {
+            edit.delete(new vscode.Range(startpos, endpos));
+          });
+          
+        cursorPosition = righteditor.selection.active;
+        line = righteditor.document.lineAt(cursorPosition.line);
+        startpos = new vscode.Position(cursorPosition.line, 0);
+        righteditor.edit((edit) => {
+            edit.insert(startpos, "\n" + text + "\n");
+          });
+      }
     }
   );
 

@@ -37,7 +37,7 @@
         "title": "duplicate python function/class"
       },
       {
-        "command": "extension.moveCurrentLineToRightEditor",
+        "command": "extension.movecurrentlinetorighteditor",
         "title": "move current line to right editor"
       }
     ],
