@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 import { Uri, commands, window } from "vscode";
 import { findDef } from "./funvistor";
-import { getEdiors} from "./tools
+import { getEdiors} from "./tools"
 import { get } from "http";
 
 export function activate(context: vscode.ExtensionContext) {
