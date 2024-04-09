@@ -49,6 +49,10 @@
       {
         "command": "extension.pythonfunctionduplicate",
         "key": "ctrl+f6"
+      },
+      {
+        "command": "extension.movecurrentlinetorighteditor",
+        "key": "ctrl+f7"
       }
     ]
   },
