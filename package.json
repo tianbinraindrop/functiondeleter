@@ -42,7 +42,11 @@
       },
       {
         "command": "extension.movecurrentlinetorighteditor",
-        "title": "move current line to right editor"
+        "title": "move current line to right editor",
+        "icon":{
+          "dark": "images/dark/movecurrentlinetorighteditor.svg",
+          "light": "images/light/movecurrentlinetorighteditor.svg"
+        }
       }
     ],
     "keybindings": [
