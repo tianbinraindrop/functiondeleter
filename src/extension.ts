@@ -13,6 +13,7 @@ export function getEdiors():Array<TextEditor> {
     let righteditor:any = visibleEditors[1];
     return [lefteditor, righteditor];
 }
+
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
     "extension.pythonfunctiondeleter",
