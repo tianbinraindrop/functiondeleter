@@ -44,8 +44,8 @@
         "command": "extension.movecurrentlinetorighteditor",
         "title": "move current line to right editor",
         "icon":{
-          "dark": "images/dark/movecurrentlinetorighteditor.svg",
-          "light": "images/light/movecurrentlinetorighteditor.svg"
+          "dark": "images/right-dark.svg",
+          "light": "images/right-light.svg"
         }
       }
     ],
