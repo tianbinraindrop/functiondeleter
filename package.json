@@ -44,7 +44,7 @@
         "command": "extension.movecurrentlinetorighteditor",
         "title": "move current line to right editor",
         "icon":{
-          "dark": "images/right-dark.svg",
+          "dark": "images/right-light.svg",
           "light": "images/right-light.svg"
         }
       }
@@ -62,7 +62,16 @@
         "command": "extension.movecurrentlinetorighteditor",
         "key": "ctrl+f7"
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "editorTextFocus",
+          "command": "extension.movecurrentlinetorighteditor",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "icon": "images/icon.png",
   "scripts": {
