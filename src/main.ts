@@ -56,6 +56,13 @@ function deleteAction(
     editor.edit((editBuilder) => {
       editBuilder.delete(new vscode.Range(startPosition, endPosition));
     });
+
+    //复制到剪贴板
+    vscode.env.clipboard.writeText(codelines).then(
+      () =>
+        vscode.window.showInformationMessage("codelines copied to clipboard."),
+      (error) => vscode.window.showErrorMessage(`Failed to copy text: ${error}`)
+    );
   }
 }
 
@@ -69,7 +76,7 @@ function duplicateAction(
   const editor = window.activeTextEditor;
   if (editor) {
     editor.edit((editBuilder) => {
-      editBuilder.insert(startPosition, NEW_LINE+ codelines + NEW_LINE); // 假设我们复制到当前编辑器的光标位置
+      editBuilder.insert(startPosition, NEW_LINE + codelines + NEW_LINE); // 假设我们复制到当前编辑器的光标位置
     });
   }
 }
@@ -123,7 +130,8 @@ export function activate(context: vscode.ExtensionContext) {
       "extension.movecurrentlinetorighteditor",
       () => {
         moveCurrentLineToRightEditor();
-      })
+      }
+    )
   );
 }
 
