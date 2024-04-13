@@ -14,5 +14,7 @@
 		// "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
 		// "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
 		// "noUnusedParameters": true,  /* Report errors on unused parameters. */
-	}
+	},
+	//一定要将out目录排除在外，否则会出现循环引用，切记
+	"exclude": ["node_modules","obsolete","out/**/*"]
 }
