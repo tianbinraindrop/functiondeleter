@@ -83,6 +83,7 @@
     "test": "vscode-test"
   },
   "dependencies": {
+    "@textlint/markdown-to-ast": "^14.0.4",
     "@types/mocha": "^10.0.6",
     "@types/node": "^18.19.24",
     "@types/vscode": "^1.87.0",

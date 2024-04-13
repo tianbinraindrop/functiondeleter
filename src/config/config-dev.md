@@ -6,12 +6,20 @@
 ```shell
 yo code
 
-npm i @types/node --save-dev
-npm i dt-python-parser --save-dev
+npm i @types/node -d
+npm i dt-python-parser -d
+npm install -d @textlint/markdown-to-ast
+
 npm list
 
 npm install -g vsce
 vsce package
+```
+
+## compile and run
+
+```shell
+npm run compile
 ```
 
 ## test
