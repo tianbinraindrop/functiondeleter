@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import { window } from "vscode";
 import { findDef } from "./funvistor"; // 假设 findDef 函数已在 funvistor.ts 中定义
+import { getRange } from "./markdownparser";
 
 const NEW_LINE = "\n";
 
@@ -15,7 +16,8 @@ type ActionHandler = (
 // 辅助函数：处理选中的函数文本
 function handleFunctionSelection(
   editor: vscode.TextEditor | undefined,
-  action: ActionHandler
+  action: ActionHandler,
+  lantype: string = "python"
 ) {
   if (!editor) return;
 
@@ -27,7 +29,13 @@ function handleFunctionSelection(
 
   const selectedName = editor.document.getText(selection);
   const code = editor.document.getText();
-  const result = findDef(code, selectedName, selection.start.line + 1);
+  let result = { start: -1, end: -1 };
+  if (lantype == "python") {
+    result = findDef(code, selectedName, selection.start.line + 1);
+  }
+  if (lantype == "markdown") {
+    result = getRange(code, selectedName);
+  }
 
   if (result.end !== -1) {
     const startPosition = new vscode.Position(result.start - 1, 0);
@@ -121,6 +129,16 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.pythonfunctionduplicate", () => {
       handleFunctionSelection(window.activeTextEditor, duplicateAction);
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.markdowndeleter", () => {
+      handleFunctionSelection(
+        window.activeTextEditor,
+        deleteAction,
+        "markdown"
+      );
     })
   );
 

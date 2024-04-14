@@ -9,6 +9,7 @@ yo code
 npm i @types/node -d
 npm i dt-python-parser -d
 npm install -d @textlint/markdown-to-ast
+npm install -d ts-tree-structure
 
 npm list
 

@@ -41,6 +41,10 @@
         "title": "duplicate python function/class"
       },
       {
+        "command": "extension.markdowndeleter",
+        "title": "remove markdown heading"
+      },
+      {
         "command": "extension.movecurrentlinetorighteditor",
         "title": "move current line to right editor",
         "icon": {
@@ -91,6 +95,7 @@
     "@typescript-eslint/parser": "^7.0.2",
     "dt-python-parser": "^0.9.0",
     "eslint": "^8.56.0",
+    "ts-tree-structure": "^1.0.2",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
