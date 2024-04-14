@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import Tree from "ts-tree-structure";
 import type { Node } from "ts-tree-structure";
-import { MarkdownString } from '../.vscode-test/vscode-win32-x64-archive-1.88.1/resources/app/out/vscode-dts/vscode';
 
 type NodeType = { id: number; deep: number; line: number; name: string };
 const eofid = 1000;
