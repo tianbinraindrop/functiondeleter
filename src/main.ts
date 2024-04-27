@@ -4,6 +4,9 @@ import { findDef } from "./funvistor"; // 假设 findDef 函数已在 funvistor.
 import { getRange } from "./markdownparser";
 
 const NEW_LINE = "\n";
+const OutputChannel = vscode.window.createOutputChannel(
+  "Python Function Deleter"
+);
 
 // 定义一个类型，用于描述对选中文本执行的操作
 type ActionHandler = (
@@ -13,6 +16,10 @@ type ActionHandler = (
   endPosition: vscode.Position
 ) => void;
 
+function showInfo(msg: string) {
+  // vscode.window.showInformationMessage(msg);
+  OutputChannel.appendLine(msg);
+}
 // 辅助函数：处理选中的函数文本
 function handleFunctionSelection(
   editor: vscode.TextEditor | undefined,
@@ -23,7 +30,7 @@ function handleFunctionSelection(
 
   const selection = editor.selection;
   if (selection.isEmpty) {
-    vscode.window.showInformationMessage("No text selected.");
+    showInfo("No text selected.");
     return;
   }
 
@@ -46,9 +53,7 @@ function handleFunctionSelection(
     );
     action(selectedName, codelines, startPosition, endPosition);
   } else {
-    vscode.window.showInformationMessage(
-      "Definition not found for the selected function."
-    );
+    showInfo("Definition not found for the selected function.");
   }
 }
 
@@ -68,8 +73,8 @@ function deleteAction(
     //复制到剪贴板
     vscode.env.clipboard.writeText(codelines).then(
       () =>
-        vscode.window.showInformationMessage("codelines copied to clipboard."),
-      (error) => vscode.window.showErrorMessage(`Failed to copy text: ${error}`)
+        showInfo("codelines copied to clipboard."),
+      (error) => showInfo(`Failed to copy text: ${error}`)
     );
   }
 }
@@ -92,16 +97,26 @@ function duplicateAction(
 // 辅助函数：将当前行移动到右侧编辑器
 function moveCurrentLineToRightEditor() {
   const visibleEditors = vscode.window.visibleTextEditors;
-  if (visibleEditors.length !== 2) {
-    vscode.window.showInformationMessage(
-      "Two editors must be open for this operation."
-    );
+  let markdownEditors: vscode.TextEditor[] = [];
+  // 获取所有 markdown 编辑器
+  for (const editor of visibleEditors) {
+    if (editor.document.fileName.endsWith(".md")) {
+      markdownEditors.push(editor);
+    }
+  }
+  if (markdownEditors.length !== 2) {
+    showInfo("Please open two markdown files.");
     return;
   }
 
-  const [leftEditor, rightEditor] = visibleEditors;
-  const cursorPosition = leftEditor.selection.active;
+  const [leftEditor, rightEditor] = markdownEditors;
+  let cursorPosition = leftEditor.selection.active;
+  
+  cursorPosition = cursorPosition.with(cursorPosition.line, 0)
+
   const lineText = leftEditor.document.lineAt(cursorPosition.line).text;
+  showInfo(`Moving line: ${lineText}`)
+  showInfo('cursorPosition: ' + cursorPosition.line + ' ' + cursorPosition.character)
 
   leftEditor.edit((editBuilder) => {
     editBuilder.delete(
@@ -112,6 +127,9 @@ function moveCurrentLineToRightEditor() {
     );
   });
 
+  // 在右侧编辑器插入当前行
+  cursorPosition = rightEditor.selection.active;
+  cursorPosition = cursorPosition.with(cursorPosition.line, 0);
   rightEditor.edit((editBuilder) => {
     editBuilder.insert(cursorPosition, lineText + NEW_LINE);
   });
