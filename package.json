@@ -2,7 +2,7 @@
   "name": "pythonfunctiondeleter",
   "displayName": "python function/class deleter",
   "description": "remove/duplicate python function/class",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -70,6 +70,10 @@
       {
         "command": "extension.movecurrentlinetorighteditor",
         "key": "ctrl+f7"
+      },
+      {
+        "command": "extension.onetab2md",
+        "key": "ctrl+f8"
       }
     ],
     "menus": {
