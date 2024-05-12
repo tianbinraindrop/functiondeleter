@@ -20,6 +20,7 @@ Python 3 syntax is supported.
 * Highlight the name of the class you want to delete in code, and press CTL+F5 to delete the entire class
 * Highlight the name of the function/class you want to dumplicate in code, and press CTL+F6 to duplicate the entire function/class
 * In the code editor, open a Markdown document, highlight a specific heading, and select the command "remove markdown heading." This action will delete all content under that heading. This behavior is equivalent to a cut operation
+* In the code editor, open a Markdown document, and select the command "translate onetab link to markdown format",This action will translate current line text to markdown hyperlink format
 * Open both editors and press Ctrl+F7 to move the current line from the left editor to the current line of the right editor. Pressing the "->" icon will also do the same thing
 
 ## license

@@ -94,6 +94,32 @@ function duplicateAction(
   }
 }
 
+// onetab2markdown转换函数
+function onetab2mdAction(
+): void {
+  const editor = window.activeTextEditor;
+  if (editor) {
+    let cursorPosition = editor.selection.active;
+    cursorPosition = cursorPosition.with(cursorPosition.line, 0);
+    const lineText = editor.document.lineAt(cursorPosition.line).text;
+
+    let startPosition = cursorPosition.with(cursorPosition.line + 1, 0);
+
+    // 使用正则表达式匹配 URL 和紧随其后的文本
+    const match = lineText.split('|', 2);
+
+    if (match) {
+      let url = match[0].trim();
+      let title = match[1].trim();
+      let mdlink = `[${title}](${url})`;
+      editor.edit((editBuilder) => {
+        editBuilder.insert(startPosition, mdlink + NEW_LINE);
+      })
+    }
+  }
+}
+
+
 // 辅助函数：将当前行移动到右侧编辑器
 function moveCurrentLineToRightEditor() {
   const visibleEditors = vscode.window.visibleTextEditors;
@@ -111,7 +137,7 @@ function moveCurrentLineToRightEditor() {
 
   const [leftEditor, rightEditor] = markdownEditors;
   let cursorPosition = leftEditor.selection.active;
-  
+
   cursorPosition = cursorPosition.with(cursorPosition.line, 0)
 
   const lineText = leftEditor.document.lineAt(cursorPosition.line).text;
@@ -150,6 +176,7 @@ export function activate(context: vscode.ExtensionContext) {
     })
   );
 
+  // 注册切MARKDOWN某层次标题的功能
   context.subscriptions.push(
     vscode.commands.registerCommand("extension.markdowndeleter", () => {
       handleFunctionSelection(
@@ -157,6 +184,13 @@ export function activate(context: vscode.ExtensionContext) {
         deleteAction,
         "markdown"
       );
+    })
+  );
+
+  // 注册转换ONETAB格式到markdown格式的功能
+  context.subscriptions.push(
+    vscode.commands.registerCommand("extension.onetab2md", () => {
+      onetab2mdAction();
     })
   );
 
@@ -171,4 +205,4 @@ export function activate(context: vscode.ExtensionContext) {
   );
 }
 
-export function deactivate() {}
+export function deactivate() { }

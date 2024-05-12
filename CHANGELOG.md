@@ -1,4 +1,8 @@
-# 0.1.0 (2024-04-27)
+# 0.1.1 (2024-05-12)
+
+* translate hyperlink format in onetab plugin to markdown link.
+
+## 0.1.0 (2024-04-27)
 
 * fix a bug in markdown moveline actions
 

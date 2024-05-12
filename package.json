@@ -2,7 +2,7 @@
   "name": "pythonfunctiondeleter",
   "displayName": "python function/class deleter",
   "description": "remove/duplicate python function/class",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -12,8 +12,9 @@
   },
   "keywords": [
     "refactor",
-    "javascript",
+    "markdown",
     "typescript",
+    "python",
     "file  content",
     "file  exchange",
     "multi-file operation",
@@ -43,6 +44,10 @@
       {
         "command": "extension.markdowndeleter",
         "title": "remove markdown heading"
+      },
+      {
+        "command": "extension.onetab2md",
+        "title": "translate onetab link to markdown format"
       },
       {
         "command": "extension.movecurrentlinetorighteditor",
